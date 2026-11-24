@@ -18,6 +18,7 @@ PITCH = "A $3-a-letter service that files your lazy agent's formal complaint aga
 def main():
     os.umask(0o022)
     assert 1 <= len(PITCH) <= 200, "entry must be 1-200 characters"
+    assert PITCH.strip() == PITCH, "entry must not start or end with whitespace"
     assert PITCH.count(".") == 1 and PITCH.endswith("."), "entry must be exactly one sentence"
     data = PITCH.encode("utf-8")
     os.makedirs("/output", exist_ok=True)
